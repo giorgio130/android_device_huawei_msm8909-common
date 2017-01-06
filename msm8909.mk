@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-$(call inherit-product-if-exists, vendor/huawei/msm8916-common/msm8916-common-vendor.mk)
+$(call inherit-product-if-exists, vendor/huawei/msm8909-common/msm8909-common-vendor.mk)
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
@@ -78,8 +78,8 @@ PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.usb.default \
     audio.r_submix.default \
-    audio.primary.msm8916 \
-    audio_policy.msm8916 \
+    audio.primary.msm8909 \
+    audio_policy.msm8909 \
     tinymix \
     libqcomvisualizer \
     libqcompostprocbundle \
@@ -96,7 +96,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/acdb/Speaker_cal.acdb:system/etc/Speaker_cal.acdb \
     $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
     $(LOCAL_PATH)/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
-    $(LOCAL_PATH)/audio/mixer_paths_qrd_skuh.xml:system/etc/mixer_paths_qrd_skuh.xml
+    $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml
 
 # ANT+
 PRODUCT_PACKAGES += \
@@ -109,7 +109,7 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    camera.msm8916 \
+    camera.msm8909 \
     Snap
 
 # Compat symbols
@@ -123,10 +123,10 @@ PRODUCT_PACKAGES += \
 
 # Display
 PRODUCT_PACKAGES += \
-    copybit.msm8916 \
-    gralloc.msm8916 \
-    memtrack.msm8916 \
-    hwcomposer.msm8916 \
+    copybit.msm8909 \
+    gralloc.msm8909 \
+    memtrack.msm8909 \
+    hwcomposer.msm8909 \
     libtinyxml
 
 # FM
@@ -140,7 +140,7 @@ PRODUCT_PACKAGES += \
 
 # GPS
 PRODUCT_PACKAGES += \
-    gps.msm8916
+    gps.msm8909
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/flp.conf:system/etc/flp.conf \
@@ -166,11 +166,11 @@ PRODUCT_COPY_FILES += \
 
 # Keystore
 PRODUCT_PACKAGES += \
-    keystore.msm8916
+    keystore.msm8909
 
 # Lights
 PRODUCT_PACKAGES += \
-    lights.msm8916
+    lights.msm8909
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -206,7 +206,7 @@ PRODUCT_COPY_FILES += \
 
 # Power HAL
 PRODUCT_PACKAGES += \
-    power.msm8916
+    power.msm8909
 
 # Ramdisk
 PRODUCT_PACKAGES += \
@@ -233,7 +233,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     calmodule.cfg \
     libcalmodule_common \
-    sensors.msm8916 \
+    sensors.msm8909 \
     sensors.native
 
 # Sensor HAL conf file

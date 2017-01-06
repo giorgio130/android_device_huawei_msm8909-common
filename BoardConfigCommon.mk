@@ -17,15 +17,17 @@
 # Product-specific compile-time definitions.
 #
 
-VENDOR_PATH := device/huawei/msm8916-common
+VENDOR_PATH := device/huawei/msm8909-common
 
 # Platform
-TARGET_BOARD_PLATFORM := msm8916
-TARGET_BOARD_PLATFORM_GPU := qcom-adreno306
+TARGET_BOARD_PLATFORM := msm8909
+TARGET_BOARD_PLATFORM_GPU := qcom-adreno304
+#add suffix variable to uniquely identify the board
+TARGET_BOARD_SUFFIX := _32
 
 # Bootloader
 TARGET_NO_BOOTLOADER := true
-TARGET_BOOTLOADER_BOARD_NAME := msm8916
+TARGET_BOOTLOADER_BOARD_NAME := msm8909
 
 # Architecture
 TARGET_ARCH := arm
@@ -33,7 +35,7 @@ TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 TARGET_CPU_ABI  := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
-TARGET_CPU_VARIANT := cortex-a53
+TARGET_CPU_VARIANT := cortex-a7
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_SMP := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
@@ -105,9 +107,9 @@ USE_OPENGL_RENDERER := true
 TARGET_USE_COMPAT_GRALLOC_ALIGN := true
 
 # Init
-TARGET_INIT_VENDOR_LIB := libinit_cherry
+TARGET_INIT_VENDOR_LIB := libinit_scale
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
-TARGET_RECOVERY_DEVICE_MODULES := libinit_cherry
+TARGET_RECOVERY_DEVICE_MODULES := libinit_scale
 TARGET_UNIFIED_DEVICE := true
 
 # Kernel
@@ -115,11 +117,11 @@ BOARD_KERNEL_BASE        := 0x80000000
 BOARD_KERNEL_PAGESIZE    := 2048
 BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
 BOARD_RAMDISK_OFFSET     := 0x02000000
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 loglevel=7 androidboot.selinux=permissive
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_DTBTOOL_ARGS := -2
 TARGET_KERNEL_SOURCE := kernel/huawei/msm8916
-TARGET_KERNEL_CONFIG := cyanogenmod_cherry_defconfig
+TARGET_KERNEL_CONFIG := cyanogenmod_scale_defconfig
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
@@ -134,7 +136,7 @@ BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_PERSISTIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x01400000 # (20M)
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x01900000 # (25M)
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1070596096
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1288491008
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 1860648960
 BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
 BOARD_PERSISTIMAGE_PARTITION_SIZE := 33554432
@@ -199,4 +201,4 @@ WIFI_DRIVER_FW_PATH_STA := "sta"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # inherit from the proprietary version
--include vendor/huawei/msm8916-common/BoardConfigVendor.mk
+-include vendor/huawei/msm8909-common/BoardConfigVendor.mk

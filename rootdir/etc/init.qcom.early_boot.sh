@@ -185,6 +185,7 @@ case "$platform" in
             elif [ $virtual_size -ge "720" ]
             then
                 setprop ro.sf.lcd_density 320
+                setprop qemu.hw.mainkeys 0
             elif [ $virtual_size -ge "480" ]
             then
                 setprop ro.sf.lcd_density 240
