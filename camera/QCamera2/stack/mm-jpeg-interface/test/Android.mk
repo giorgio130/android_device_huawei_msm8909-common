@@ -7,7 +7,7 @@ LOCAL_PATH := $(MM_JPEG_TEST_PATH)
 LOCAL_MODULE_TAGS := optional
 
 LOCAL_CFLAGS := -DCAMERA_ION_HEAP_ID=ION_IOMMU_HEAP_ID
-LOCAL_CFLAGS += -Werror
+LOCAL_CFLAGS += -Wall -Wextra -Werror -Wno-unused-parameter
 LOCAL_CFLAGS += -D_ANDROID_
 LOCAL_CFLAGS += -include mm_jpeg_dbg.h
 
@@ -16,7 +16,7 @@ LOCAL_CFLAGS += -DUSE_ION
 endif
 
 OMX_HEADER_DIR := frameworks/native/include/media/openmax
-OMX_CORE_DIR := hardware/qcom/camera/mm-image-codec
+OMX_CORE_DIR := $(call project-path-for,qcom-camera)/mm-image-codec
 
 LOCAL_C_INCLUDES := $(MM_JPEG_TEST_PATH)
 LOCAL_C_INCLUDES += $(MM_JPEG_TEST_PATH)/../inc
@@ -27,7 +27,7 @@ LOCAL_C_INCLUDES += $(OMX_CORE_DIR)/qomx_core
 
 ifneq ($(strip $(USE_BIONIC_HEADER)),true)
 LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
-LOCAL_C_INCLUDES += hardware/qcom/camera
+LOCAL_C_INCLUDES += $(call project-path-for,qcom-camera)
 endif
 LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
 
@@ -49,7 +49,8 @@ LOCAL_PATH := $(MM_JPEG_TEST_PATH)
 LOCAL_MODULE_TAGS := optional
 
 LOCAL_CFLAGS := -DCAMERA_ION_HEAP_ID=ION_IOMMU_HEAP_ID
-LOCAL_CFLAGS += -Werror
+LOCAL_CFLAGS += -Wall -Wextra -Werror -Wno-unused-parameter
+
 LOCAL_CFLAGS += -D_ANDROID_
 LOCAL_CFLAGS += -include mm_jpeg_dbg.h
 
@@ -58,7 +59,7 @@ LOCAL_CFLAGS += -DUSE_ION
 endif
 
 OMX_HEADER_DIR := frameworks/native/include/media/openmax
-OMX_CORE_DIR := hardware/qcom/camera/mm-image-codec
+OMX_CORE_DIR := $(call project-path-for,qcom-camera)/mm-image-codec
 
 LOCAL_C_INCLUDES := $(MM_JPEG_TEST_PATH)
 LOCAL_C_INCLUDES += $(MM_JPEG_TEST_PATH)/../inc
@@ -69,7 +70,7 @@ LOCAL_C_INCLUDES += $(OMX_CORE_DIR)/qomx_core
 
 ifneq ($(strip $(USE_BIONIC_HEADER)),true)
 LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
-LOCAL_C_INCLUDES += hardware/qcom/camera
+LOCAL_C_INCLUDES += $(call project-path-for,qcom-camera)
 endif
 LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
 
