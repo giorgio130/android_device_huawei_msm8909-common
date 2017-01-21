@@ -15,7 +15,7 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifneq ($(filter cherry che10,$(TARGET_DEVICE)),)
+ifneq ($(filter scale,$(TARGET_DEVICE)),)
 
 include $(call all-makefiles-under,$(LOCAL_PATH))
 

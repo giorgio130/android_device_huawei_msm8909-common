@@ -1,5 +1,6 @@
 #
 # Copyright (C) 2016 The CyanogenMod Project
+#           (C) 2017 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,15 +18,17 @@
 # Product-specific compile-time definitions.
 #
 
-VENDOR_PATH := device/huawei/msm8916-common
+VENDOR_PATH := device/huawei/msm8909-common
 
 # Platform
-TARGET_BOARD_PLATFORM := msm8916
-TARGET_BOARD_PLATFORM_GPU := qcom-adreno306
+TARGET_BOARD_PLATFORM := msm8909
+TARGET_BOARD_PLATFORM_GPU := qcom-adreno304
+#add suffix variable to uniquely identify the board
+TARGET_BOARD_SUFFIX := _32
 
 # Bootloader
 TARGET_NO_BOOTLOADER := true
-TARGET_BOOTLOADER_BOARD_NAME := msm8916
+TARGET_BOOTLOADER_BOARD_NAME := msm8909
 
 # Architecture
 TARGET_ARCH := arm
@@ -33,7 +36,7 @@ TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 TARGET_CPU_ABI  := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
-TARGET_CPU_VARIANT := cortex-a53
+TARGET_CPU_VARIANT := cortex-a7
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_SMP := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
@@ -47,6 +50,7 @@ AUDIO_FEATURE_ENABLED_KPI_OPTIMIZE := true
 AUDIO_FEATURE_ENABLED_NEW_SAMPLE_RATE := true
 BOARD_USES_ALSA_AUDIO := true
 USE_CUSTOM_AUDIO_POLICY := 1
+USE_XML_AUDIO_POLICY_CONF := 1
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
@@ -58,7 +62,7 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(VENDOR_PATH)/bluetooth
 USE_DEVICE_SPECIFIC_CAMERA := true
 BOARD_USES_LEGACY_MMAP := true
 TARGET_USE_VENDOR_CAMERA_EXT := true
-COMMON_GLOBAL_CFLAGS += -DCAMERA_VENDOR_L_COMPAT
+BOARD_GLOBAL_CFLAGS += -DCAMERA_VENDOR_L_COMPAT
 
 # Charger
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
@@ -70,16 +74,11 @@ BOARD_HARDWARE_CLASS := \
     $(VENDOR_PATH)/cmhw
 TARGET_TAP_TO_WAKE_NODE := "/sys/touch_screen/easy_wakeup_gesture"
 
-# CNE
-BOARD_USES_QCNE := true
-TARGET_LDPRELOAD := libNimsWrap.so
-
 # Encryption
 TARGET_HW_DISK_ENCRYPTION := true
 
 # Flags
-COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
-COMMON_GLOBAL_CPPFLAGS += -DNO_SECURE_DISCARD
+BOARD_NO_SECURE_DISCARD := true
 
 # FM
 AUDIO_FEATURE_ENABLED_FM_POWER_OPT := true
@@ -105,9 +104,9 @@ USE_OPENGL_RENDERER := true
 TARGET_USE_COMPAT_GRALLOC_ALIGN := true
 
 # Init
-TARGET_INIT_VENDOR_LIB := libinit_cherry
+TARGET_INIT_VENDOR_LIB := libinit_scale
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
-TARGET_RECOVERY_DEVICE_MODULES := libinit_cherry
+TARGET_RECOVERY_DEVICE_MODULES := libinit_scale
 TARGET_UNIFIED_DEVICE := true
 
 # Kernel
@@ -119,13 +118,16 @@ BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 an
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_DTBTOOL_ARGS := -2
 TARGET_KERNEL_SOURCE := kernel/huawei/msm8916
-TARGET_KERNEL_CONFIG := cyanogenmod_cherry_defconfig
+TARGET_KERNEL_CONFIG := lineageos_scale_defconfig
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
 # Malloc
-MALLOC_IMPL := dlmalloc
+MALLOC_SVELTE := true
+
+# Media
+TARGET_USES_MEDIA_EXTENSIONS := true
 
 # Partitions
 TARGET_USERIMAGES_USE_EXT4 := true
@@ -134,7 +136,7 @@ BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_PERSISTIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x01400000 # (20M)
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x01900000 # (25M)
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1070596096
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1288491008
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 1860648960
 BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
 BOARD_PERSISTIMAGE_PARTITION_SIZE := 33554432
@@ -148,6 +150,7 @@ TARGET_SYSTEM_PROP := $(VENDOR_PATH)/system.prop
 
 # Qualcomm support
 BOARD_USES_QCOM_HARDWARE := true
+BOARD_HAVE_QCOM_FM := true
 
 # Recovery
 TARGET_RECOVERY_DEVICE_DIRS += $(VENDOR_PATH)
@@ -170,6 +173,7 @@ endif
 
 # RIL
 TARGET_RIL_VARIANT := caf
+BOARD_GLOBAL_CFLAGS += -DUSE_RIL_VERSION_11
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
@@ -199,4 +203,4 @@ WIFI_DRIVER_FW_PATH_STA := "sta"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # inherit from the proprietary version
--include vendor/huawei/msm8916-common/BoardConfigVendor.mk
+-include vendor/huawei/msm8909-common/BoardConfigVendor.mk

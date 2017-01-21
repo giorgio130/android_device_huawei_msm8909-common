@@ -185,6 +185,7 @@ case "$platform" in
             elif [ $virtual_size -ge "720" ]
             then
                 setprop ro.sf.lcd_density 320
+                setprop qemu.hw.mainkeys 0
             elif [ $virtual_size -ge "480" ]
             then
                 setprop ro.sf.lcd_density 240
@@ -204,12 +205,28 @@ case "$platform" in
                 then
                     setprop media.msm8939hw 1
                 fi
+                if [ $soc_hwid -ge "268" ] && [ $soc_hwid -le "271" ]
+                then
+                    setprop media.msm8929hw 1
+                fi
                 ;;
             *)
                 setprop ro.opengles.version 196608
                 ;;
         esac
-        ;;
+
+	# auto firmware upgrade for ITE tecg touch screen
+        case $platform in
+            "msm8909" | "msm8909w")
+                case $soc_hwplatform in
+                    "MTP")
+                        echo 1 > /sys/bus/i2c/devices/5-0046/cfg_update
+                        echo 1 > /sys/bus/i2c/devices/5-0046/fw_update
+                        ;;
+                esac
+                ;;
+        esac
+	;;
 esac
 
 # Setup display nodes & permissions
@@ -254,7 +271,16 @@ dev_file=/dev/graphics/fb$fb_cnt
         set_perms $file/dyn_pu system.graphics 0664
         set_perms $file/modes system.graphics 0664
         set_perms $file/mode system.graphics 0664
+        set_perms $file/mdp/bw_mode_bitmap system.graphics 0664
     fi
   fi
 done
 
+boot_reason=`cat /proc/sys/kernel/boot_reason`
+reboot_reason=`getprop ro.boot.alarmboot`
+if [ "$boot_reason" = "3" ] || [ "$reboot_reason" = "true" ]; then
+    setprop ro.alarm_boot true
+    setprop debug.sf.nobootanimation 1
+else
+    setprop ro.alarm_boot false
+fi

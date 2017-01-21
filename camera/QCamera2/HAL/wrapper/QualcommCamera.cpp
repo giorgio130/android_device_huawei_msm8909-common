@@ -58,19 +58,19 @@ extern "C" {
 
 
 static hw_module_methods_t camera_module_methods = {
-    open: camera_device_open,
+    .open = camera_device_open,
 };
 
 static hw_module_t camera_common = {
-    tag: HARDWARE_MODULE_TAG,
-    module_api_version: CAMERA_MODULE_API_VERSION_1_0,
-    hal_api_version: HARDWARE_HAL_API_VERSION,
-    id: CAMERA_HARDWARE_MODULE_ID,
-    name: "QCamera Module",
-    author: "Quic on behalf of CAF",
-    methods: &camera_module_methods,
-    dso: NULL,
-    reserved:  {0},
+    .tag                    = HARDWARE_MODULE_TAG,
+    .module_api_version     = CAMERA_MODULE_API_VERSION_1_0,
+    .hal_api_version        = HARDWARE_HAL_API_VERSION,
+    .id                     = CAMERA_HARDWARE_MODULE_ID,
+    .name                   = "QCamera Module",
+    .author                 = "Quic on behalf of CAF",
+    .methods                = &camera_module_methods,
+    .dso                    = NULL,
+    .reserved               = {0},
 };
 
 using namespace qcamera;
@@ -131,9 +131,9 @@ extern "C" int  camera_device_open(
     camera_device *device = NULL;
 
     if(module && id && hw_device) {
-        int cameraId = atoi(id);
-
         if (!strcmp(module->name, camera_common.name)) {
+            int cameraId = atoi(id);
+
             camera_hardware_t *camHal =
                 (camera_hardware_t *) malloc(sizeof (camera_hardware_t));
             if(!camHal) {
@@ -143,7 +143,7 @@ extern "C" int  camera_device_open(
             }
             /* we have the camera_hardware obj malloced */
             memset(camHal, 0, sizeof (camera_hardware_t));
-            camHal->hardware = new QCamera2HardwareInterface(cameraId);
+            camHal->hardware = new QCamera2HardwareInterface((uint32_t)cameraId);
             if (camHal->hardware) {
                 camHal->cameraId = cameraId;
                 device = &camHal->hw_dev;
