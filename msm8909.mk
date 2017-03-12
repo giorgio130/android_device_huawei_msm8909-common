@@ -53,8 +53,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.extension_library=libqti-perfd-client.so \
     persist.radio.apm_sim_not_pwdn=1 \
     persist.radio.sib16_support=1 \
-    ro.sf.lcd_density=320 \
-    ro.sys.sdcardfs=true
+    ro.sf.lcd_density=320
 
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heapgrowthlimit=128m \
@@ -120,7 +119,6 @@ PRODUCT_PACKAGES += \
 
 # Compat symbols
 PRODUCT_PACKAGES += \
-    libhuawei_cutilz \
     libshim_cutils
 
 # Connectivity Engine support (CNE)

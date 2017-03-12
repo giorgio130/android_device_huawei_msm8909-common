@@ -174,6 +174,8 @@ const char QCameraParameters::KEY_QC_LONGSHOT_SUPPORTED[] = "longshot-supported"
 const char QCameraParameters::KEY_QC_4K2K_LIVESNAP_SUPPORTED[] = "4k2k-video-snapshot-supported";
 const char QCameraParameters::KEY_QC_ZSL_HDR_SUPPORTED[] = "zsl-hdr-supported";
 const char QCameraParameters::KEY_QC_AUTO_HDR_SUPPORTED[] = "auto-hdr-supported";
+const char QCameraParameters::WHITE_BALANCE_MANUAL_CCT[] = "manual-cct";
+const char QCameraParameters::FOCUS_MODE_MANUAL_POSITION[] = "manual";
 
 const char QCameraParameters::WHITE_BALANCE_MANUAL[] = "manual";
 const char QCameraParameters::FOCUS_MODE_MANUAL_POSITION[] = "manual";
