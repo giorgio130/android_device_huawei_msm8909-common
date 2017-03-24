@@ -51,6 +51,40 @@ void init_target_properties()
     
     property_set("qemu.hw.mainkeys", "0");
 
+    /* SCL-AL00 */
+    if (buf.find("SCL-AL00") != std::string::npos) {
+        property_set("ro.product.model", "SCL-AL00");
+        property_set("ro.product.name", "SCL-AL00");
+        property_set("ro.product.device", "SCL-AL00");
+        property_set("ro.build.product", "SCL-AL00");
+        property_set("ro.config.dsds_mode", "umts_gsm");
+        property_set("persist.dsds.enabled", "true");
+        property_set("persist.radio.multisim.config", "dsds");
+        property_set("ro.telephony.ril.config", "simactivation");
+        property_set("persist.radio.dont_use_dsd", "true");
+        property_set("ro.multi.rid", "true");
+        property_set("ro.config.hw_showSimName", "true");
+        property_set("ro.dual.sim.phone", "true");
+        property_set("ro.build.description", "SCL-AL00-user 7.1.1 GRJ90 C432B150 release-keys");
+        property_set("ro.build.fingerprint", "Huawei/SCL-AL00/hwSCL-Q:7.1.1/HuaweiSCL-AL00/C432B150:user/release-keys");
+    }
+    /* SCL-CL00 */
+    if (buf.find("SCL-CL00") != std::string::npos) {
+        property_set("ro.product.model", "SCL-CL00");
+        property_set("ro.product.name", "SCL-CL00");
+        property_set("ro.product.device", "SCL-CL00");
+        property_set("ro.build.product", "SCL-CL00");
+        property_set("ro.config.dsds_mode", "umts_gsm");
+        property_set("persist.dsds.enabled", "true");
+        property_set("persist.radio.multisim.config", "dsds");
+        property_set("ro.telephony.ril.config", "simactivation");
+        property_set("persist.radio.dont_use_dsd", "true");
+        property_set("ro.multi.rid", "true");
+        property_set("ro.config.hw_showSimName", "true");
+        property_set("ro.dual.sim.phone", "true");
+        property_set("ro.build.description", "SCL-CL00-user 7.1.1 GRJ90 C432B150 release-keys");
+        property_set("ro.build.fingerprint", "Huawei/SCL-CL00/hwSCL-Q:7.1.1/HuaweiSCL-CL00/C432B150:user/release-keys");
+    } 
     /* SCL-L01 */
     if (buf.find("SCL-L01") != std::string::npos) {
         property_set("ro.product.model", "SCL-L01");
@@ -94,6 +128,40 @@ void init_target_properties()
         property_set("ro.dual.sim.phone", "true");
         property_set("ro.build.description", "SCL-L21-user 7.1.1 GRJ90 C432B150 release-keys");
         property_set("ro.build.fingerprint", "Huawei/SCL-L21/hwSCL-Q:7.1.1/HuaweiSCL-L21/C432B150:user/release-keys");
+    }
+    /* SCL-TL00H */
+    if (buf.find("SCL-CL00") != std::string::npos) {
+        property_set("ro.product.model", "SCL-TL00H");
+        property_set("ro.product.name", "SCL-TL00H");
+        property_set("ro.product.device", "SCL-TL00H");
+        property_set("ro.build.product", "SCL-TL00H");
+        property_set("ro.config.dsds_mode", "umts_gsm");
+        property_set("persist.dsds.enabled", "true");
+        property_set("persist.radio.multisim.config", "dsds");
+        property_set("ro.telephony.ril.config", "simactivation");
+        property_set("persist.radio.dont_use_dsd", "true");
+        property_set("ro.multi.rid", "true");
+        property_set("ro.config.hw_showSimName", "true");
+        property_set("ro.dual.sim.phone", "true");
+        property_set("ro.build.description", "SCL-TL00H-user 7.1.1 GRJ90 C432B150 release-keys");
+        property_set("ro.build.fingerprint", "Huawei/SCL-TL00H/hwSCL-Q:7.1.1/HuaweiSCL-TL00H/C432B150:user/release-keys");
+    }
+    /* SCL-TL10 */
+    if (buf.find("SCL-TL10") != std::string::npos) {
+        property_set("ro.product.model", "SCL-TL10");
+        property_set("ro.product.name", "SCL-TL10");
+        property_set("ro.product.device", "SCL-TL10");
+        property_set("ro.build.product", "SCL-TL10");
+        property_set("ro.config.dsds_mode", "umts_gsm");
+        property_set("persist.dsds.enabled", "true");
+        property_set("persist.radio.multisim.config", "dsds");
+        property_set("ro.telephony.ril.config", "simactivation");
+        property_set("persist.radio.dont_use_dsd", "true");
+        property_set("ro.multi.rid", "true");
+        property_set("ro.config.hw_showSimName", "true");
+        property_set("ro.dual.sim.phone", "true");
+        property_set("ro.build.description", "SCL-TL10-user 7.1.1 GRJ90 C432B150 release-keys");
+        property_set("ro.build.fingerprint", "Huawei/SCL-TL10/hwSCL-Q:7.1.1/HuaweiSCL-TL10/C432B150:user/release-keys");
     }
     /* SCL-U21 */
     if (buf.find("SCL-U21") != std::string::npos) {
